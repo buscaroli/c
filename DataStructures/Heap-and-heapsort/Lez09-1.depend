@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1550678869 source:c:\users\mbusc\code\lez09-1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"functions.h"
+
+1550674736 c:\users\mbusc\code\lez09-1\functions.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1550678825 source:c:\users\mbusc\code\lez09-1\functions.c
+	"functions.h"
+
+1550679644 source:c:\users\mbusc\code\temp\heap-and-heapsort\main.c
+	<stdio.h>
+	<stdlib.h>
+	"functions.h"
+
+1550679644 c:\users\mbusc\code\temp\heap-and-heapsort\functions.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
