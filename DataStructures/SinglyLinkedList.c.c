@@ -11,7 +11,7 @@ struct Node{
 // FUNCTIONS
 /*
  * Creates a linked list from an array of int
- */ 
+ */
 void create(int A[], int n){
 	int i;
 	struct Node *t, *last;
@@ -19,7 +19,7 @@ void create(int A[], int n){
 	first->data = A[0];
 	first->next = NULL;
 	last = first;
-	
+
 	for (i = 1; i<n; i++){
 		t = (struct Node*)malloc(sizeof(struct Node));
 		t->data = A[i];
@@ -30,7 +30,7 @@ void create(int A[], int n){
 }
 
 void Display(struct Node *p){
-	
+
 	while (p != NULL){
 		printf("%3d -> ", p->data);
 		p = p->next;
@@ -46,7 +46,7 @@ void Display_r(struct Node *p){
 		printf("%3d -> ", p->data);
 		Display_r(p->next);
 	}
-	
+
 }
 
 /*
@@ -58,8 +58,8 @@ void Display_r_rev(struct Node *p){
 		Display_r_rev(p->next);
 		printf("%3d -> ", p->data);
 	}
-	
-	
+
+
 }
 
  /*
@@ -67,7 +67,7 @@ void Display_r_rev(struct Node *p){
   */
   int count(struct Node *p){
   	int counter = 0;
-  	
+
   	while (p != NULL){
   		counter++;
   		p = p->next;
@@ -79,33 +79,33 @@ void Display_r_rev(struct Node *p){
   * Counts the nodes in the list
   */
   int count_r(struct Node *p){
-  	
+
   	if ( p == NULL){
   		return 0;
 	  }
   	else {
-		return count_r(p->next) + 1; 
-		
+		return count_r(p->next) + 1;
+
     }
-    
+
   }
 
 /*
  * Sums the dada of all the elements of the list
- */ 
+ */
 int sum (struct Node *p){
 	int total = 0;
-	
+
 	while (p != NULL){
 		total += p->data;
 		p = p->next;
-	}	
+	}
 	return total;
 }
 
 /*
  * Sums the dada of all the elements of the list
- */ 
+ */
 int sum_r(struct Node *p){
 	if (p == 0){
 		return 0;
@@ -121,7 +121,7 @@ int sum_r(struct Node *p){
  */
  int minimum(struct Node *p){
  	int m = INT_MAX;
- 	
+
  	while (p != NULL){
  		if (p->data < m){
  			m = p->data;
@@ -130,13 +130,13 @@ int sum_r(struct Node *p){
 	 }
 	 return m;
  }
- 
+
 /*
  * Finds and returns the maximum number in the list
  */
  int maximum(struct Node *p){
  	int m = INT_MIN;
- 	
+
  	while (p != NULL){
  		if (p->data > m){
 			m = p->data;
@@ -145,7 +145,7 @@ int sum_r(struct Node *p){
 	 }
  	return m;
  }
- 
+
 /*
  * Finds and returns the maximum number in the list
  * Recursive version
@@ -163,9 +163,9 @@ int sum_r(struct Node *p){
 	 		return (p->data);
 		 }
 	}
- 		
+
  }
- 
+
  /*
  * Finds and returns the maximum number in the list
  * Recursive version, ternary operator
@@ -180,9 +180,9 @@ int sum_r(struct Node *p){
 		return x > p->data ? x : p->data;
  	}
  }
- 
+
  /*
-  * Srearch for an element inside the list and 
+  * Srearch for an element inside the list and
   * returns the pointer to the item
   */
 struct Node* search(struct Node *p, int key){
@@ -194,9 +194,9 @@ struct Node* search(struct Node *p, int key){
 	}
 	return NULL;
 }
- 
+
  /*
-  * Srearch for an element inside the list and 
+  * Srearch for an element inside the list and
   * returns the pointer to the item
   * RECURSIVE version
   */
@@ -212,9 +212,9 @@ struct Node* search_r(struct Node *p, int key){
 		return search_r(p->next, key);
 	}
 }
- 
+
  /*
-  * Search for an element inside the list and 
+  * Search for an element inside the list and
   * returns the pointer to the item, if found
   * applies "move to head": item is moved to
   * the first element of the list so
@@ -225,7 +225,7 @@ struct Node* search_mth(struct Node **head, int key){
 	struct Node *p, *q;
 	p = *head;
 	q = NULL;
-	
+
 	while (p != NULL){
 		if (p->data == key){
 			q->next = p->next;
@@ -245,16 +245,16 @@ struct Node* search_mth(struct Node **head, int key){
 void insert(struct Node **head, int index, int x){
 	struct Node *temp, *p;
 	p = *head;
-	
-	
+
+
 	if (index < 0 || index > count(p)){
 		return;
 	}
-	
+
 	temp = (struct Node*)malloc(sizeof(struct Node));
 	temp->data = x;
 	temp->next = NULL;
-	
+
 	// 2 cases: at the head of the list
 	//          after a node
 	if (index == 0){
@@ -267,8 +267,8 @@ void insert(struct Node **head, int index, int x){
 		}
 		temp->next = p->next;
 		p->next = temp;
-	}	
-	
+	}
+
 }
 
 /*
@@ -277,12 +277,12 @@ void insert(struct Node **head, int index, int x){
 void insert_tail(struct Node **head, int key){
 	struct Node *p = *head, *temp;
 	/* same as struct Node *p; p = *head; */
-	
+
 	temp = (struct Node*)malloc(sizeof(struct Node));
 	if (!temp) exit(-1);
 	temp->data = key;
 	temp->next = NULL;
-	
+
 	if (*head == NULL){
 		*head = temp;
 	}
@@ -305,15 +305,15 @@ void insert_ordered(struct Node **head, int key){
 	if (!temp) exit(-1);
 	temp->data = key;
 	temp->next = NULL;
-	
+
 	p = *head;
 	q = NULL;
-	
+
 	if (p == NULL) {
 		*head = temp;
 	}
 	else {
-		while (p->data < key && p != NULL ){
+		while ( p != NULL  && p->data < key){
 			q = p;
 			p = p->next;
 		}
@@ -324,26 +324,26 @@ void insert_ordered(struct Node **head, int key){
 		else{
 			temp->next = q->next;
 			q->next = temp;
-		
+
 		}
-		
+
 	}
-	
+
 }
- 
+
 /*
  * Deletes the node at the given index
- */ 
- 
+ */
+
  void delete(struct Node **head, int index){
  	struct Node *p, *q;
  	p = *head;
  	q = NULL;
- 	
+
  	if (p == NULL || index < 0 || index > count(p)){
  		return;
 	 }
-	
+
 	for (int i = 0; i < index-1; i++){
 		q = p;
 		p = p->next;
@@ -356,7 +356,7 @@ void insert_ordered(struct Node **head, int key){
 	else {
 		q->next = p->next;
 		free(p);
-		p = NULL;	
+		p = NULL;
 	}
  }
 // MAIN
@@ -364,10 +364,10 @@ void insert_ordered(struct Node **head, int key){
 int main (void){
 	int A[] = {3, 5, 7, 10, 15};
 	struct Node *temp;
-	
+
 	create(A, 5);
 	Display(first);
-	Display_r(first);  
+	Display_r(first);
 	printf("%s", "\n");
 	Display_r_rev(first);
 	printf("%s", "\n");
@@ -405,7 +405,7 @@ int main (void){
 	Display(second);
 	delete(&second, -5);
 	Display(second);
-		
+
 	return 0;
 }
 

@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1558351794 source:c:\users\mbusc\code\c\datastructures\hashtable-chaining\main.c
+	<stdio.h>
+	<stdlib.h>
+	"chaining.h"
+
+1558349648 c:\users\mbusc\code\c\datastructures\hashtable-chaining\chaining.h
+
+1558351767 source:c:\users\mbusc\code\c\datastructures\hashtable-chaining\chaining_functions.c
+	<stdio.h>
+	<stdlib.h>
+	"chaining.h"
+
